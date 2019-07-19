@@ -276,7 +276,7 @@ aside .card-footer a {
 .site-description {
 	font-size: 1.125em;
 	letter-spacing: -0.01em;
-	margin-top: calc(1rem/5);
+	margin-top: calc (1rem / 5);
 	display: inline;
 	color: var(--primario);
 	font-weight: normal;
