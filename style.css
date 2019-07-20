@@ -21,11 +21,15 @@ Text Domain: mitema
 	--secundario: #804515;
 
 	--gris: #f5f5f5;
+	--body_color: linear-gradient(135deg, #d6ffe0, rgba(0, 123, 255, 0.25), transparent);
+
+	--header_footer: linear-gradient(245deg, #00cad5, cyan, transparent);
 }
+
 body {
 	font-family: sans-serif;
 	color: #303030;
-	background-color: var(--gris);
+	background: var(--body_color) !important;
 }
 p {
 	font-weight: 300;
@@ -34,7 +38,11 @@ p {
 }
 .header {
 	border-bottom: 3px solid var(--primario);
-	background-color: var(--gris);
+	/* background-color: var(--gris); */
+	background: var(--header_footer);
+}
+.Entry-info a {
+	color: var(--primario);
 }
 .wpcf7-form-control-wrap,
 .form-group label {
@@ -277,7 +285,7 @@ aside .card-footer a {
 .footer {
 	border-bottom: 3px solid var(--primario);
 	border-top: 3px solid var(--primario);
-	background-color: var(--gris);
+	background: var(--header_footer);
 }
 .site-logo,
 .custom-logo {
