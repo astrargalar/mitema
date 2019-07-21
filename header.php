@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php wp_head(); ?>
 </head>
+<?php flush(); //permite limpiar el buffer de datos y enviarlos al navegador del usuario
+?>
 
 <body <?php body_class(); ?>>
 
