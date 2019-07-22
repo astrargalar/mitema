@@ -104,9 +104,9 @@ function mitema_scripts()
     wp_enqueue_script('jquery');
     wp_enqueue_script(
         'popper',
-        get_template_directory_uri() . '/js/popper.js',
+        "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js",
         'jquery',
-        '1.0',
+        '1.14.7',
         true
     );
     wp_enqueue_script(
