@@ -1,6 +1,12 @@
 <?php
+// Limitar el ancho del contenido
+function  mitema_content_width()
+{
+    $GLOBALS['content_width'] = apply_filters('mitema_content_width', 640);
+}
+add_action('after_setup_theme', 'mitema_content_width', 0);
 
-
+//Permitir la función de money_format en Windows
 function money_format($floatcurr, $curr = 'EUR')
 { }
 //Formatear monedas. La función money_format() no funciona en Windows
@@ -12,7 +18,7 @@ function asEuro($value)
 add_action('init', 'mitema_imagen_destacada');
 function mitema_imagen_destacada($id)
 {
-    $imagen = get_the_post_thumbnail_url($id, 'full');
+    $imagen = get_the_post_thumbnail_url($id, 'mediano');
     $html = '';
     $clase = false;
     if ($imagen) {
@@ -45,10 +51,25 @@ function mitema_setup()
 
     //Permitir imágenes destacadas
     add_theme_support('post-thumbnails');
-    //Permitir 'Ancho Completo" en el editor
-    add_theme_support('align-wide');
+    //set_post_thumbnail_size(1568, 9999);
+
+
+    // Add default posts and comments RSS feed links to head.
+    add_theme_support('automatic-feed-links');
     // Dejar que WP maneje los títulos
     add_theme_support('title-tag');
+    //Gutenberg
+    //Permitir 'Ancho Completo" en el editor
+    add_theme_support('align-wide');
+    // Habilitar el modo oscuro para el editor
+    add_theme_support('editor-styles');
+    add_theme_support('wp-block-styles');
+    add_theme_support('dark-editor-style');
+    add_theme_support('responsive-embeds');
+    // Habilitar el modo oscuro para el editor
+    add_theme_support('editor-styles');
+    add_theme_support('dark-editor-style');
+
     /*
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
@@ -62,9 +83,7 @@ function mitema_setup()
             'caption',
         )
     );
-    // Habilitar el modo oscuro para el editor
-    add_theme_support('editor-styles');
-    add_theme_support('dark-editor-style');
+
 
     // add_theme_support('custom-logo');
     add_theme_support('custom-logo', array(
@@ -93,14 +112,15 @@ function mitema_enlace_class($atts, $item, $args)
 add_filter('nav_menu_link_attributes', 'mitema_enlace_class', 10, 3);
 
 
+
 // =========== Carga de los estilos y scripts
 function mitema_scripts()
 {
     // ========== Carga los estilos ===========
     // normalize-css
-    wp_register_style('normalize', "https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/0.5.0/modern-normalize.css", array(), '7.0.0');
+    //wp_register_style('normalize', "https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/0.5.0/modern-normalize.css", array(), '7.0.0');
     // wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/css/bootstrap.css', false, '4.1.3');
-    wp_enqueue_style('bootstrap-css', "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", array('normalize'), '4.3.1');
+    wp_enqueue_style('bootstrap-css', "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", array(), '4.3.1');
     wp_enqueue_style('style', get_stylesheet_uri(), array('bootstrap-css'));
     // ========== Carga los scripst =======-====
     wp_enqueue_script('jquery');
